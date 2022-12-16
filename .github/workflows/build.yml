@@ -31,14 +31,17 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+          
+      - name: Build and run project
+        run: mvn package
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      - name: Build and analyze
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MPIL2023_tp-bootiful-tests-as-ui-docker-2-3-2-jakarta4life -Dsonar.organization=mpil2023 -Dsonar.host.url=https://sonarcloud.io
+      - name: Run tests and analyze
+        run: mvn test org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MPIL2023_tp-bootiful-tests-as-ui-docker-2-3-2-jakarta4life -Dsonar.organization=mpil2023 -Dsonar.host.url=https://sonarcloud.io
         env:
           # Needed to get some information about the pull request, if any
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
