@@ -34,8 +34,7 @@ jobs:
           
       - name: Build and run project
         run: |
-            nohup java -jar <jar file> &
-            while ! nc -z localhost 8080; do sleep 1; done
+            nohup java -jar <jar file> & while ! nc -z localhost 8080; do sleep 1; done
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
