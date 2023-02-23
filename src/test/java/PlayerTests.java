@@ -1,6 +1,8 @@
 import static io.restassured.RestAssured.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(webEnvironment=8090)
 public class PlayerTests {
