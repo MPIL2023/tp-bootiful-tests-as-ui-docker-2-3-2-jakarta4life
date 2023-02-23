@@ -2,7 +2,7 @@ import static io.restassured.RestAssured.*;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
-
+@SpringBootTest(webEnvironment=8090)
 public class PlayerTests {
 
     // The endpoint being tested
